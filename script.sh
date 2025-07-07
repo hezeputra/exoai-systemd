@@ -1,4 +1,13 @@
 #!/bin/bash
+set -x
 
-source /opt/test/hailo-rpi5-examples/setup_env.sh
-python /opt/test/hailo-rpi5-examples/basic_pipelines/testtt.py --use-frame --input url
+cd /opt/exoai/exoai || exit 1
+
+if ! source setup_env.sh; then
+  echo "Failed to source setup_env"
+  exit 1
+fi
+
+echo "Environment activated. Running Python app..."
+
+python basic_pipelines/pose.py --use-frame --input url
